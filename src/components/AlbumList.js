@@ -7,8 +7,12 @@ export default class AlbumList extends Component {
 
   componentWillMount() {
     axios.get('http://rallycoding.herokuapp.com/api/music_albums')
-    .then(function (response) {
+    .then(response => {
+      console.log(response.data);
        this.setState({ albums: response.data });
+    })
+    .catch((error) => {
+      console.log(error);
     });
   }
 
@@ -24,13 +28,16 @@ export default class AlbumList extends Component {
 
   renderAlbums() {
     return this.state.albums.map(album =>
-      <Text>{album.title}</Text>
+      <Text key={album.title}> {album.title} </Text>
     );
   }
 
   render() {
+    console.log(this.state);
     return (
-      <View> { this.renderAlbums() }</View>
+      <View>
+        { this.renderAlbums() }
+      </View>
     );
   }
 }
