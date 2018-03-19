@@ -16,16 +16,6 @@ export default class AlbumList extends Component {
     });
   }
 
-  // async function getAlbumsFromApi() {
-  //   try {
-  //     const response = await ;
-  //     this.setState({ albums: response.data });
-  //     console.log(response);
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
   renderAlbums() {
     return this.state.albums.map(album =>
       <Text key={album.title}> {album.title} </Text>
